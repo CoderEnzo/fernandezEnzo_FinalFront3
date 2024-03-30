@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #013e80;
+    background-color: red;
     padding: 10px;
     color: #fff;
   }
@@ -26,14 +26,14 @@
     text-decoration: none;
     color: #fff; 
     padding: 8px 16px;
-    background-color: #013e80;
+    background-color: black;
     }
   
     .navbar.dark {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #05222e; 
+    background-color: cyan; 
     padding: 10px;
     color: #fff; 
   }
@@ -47,7 +47,7 @@
   
   .links.dark {
     display: flex;
-    background-color: transparent;
+    background-color: gray;
   }
   
   .links.dark a {

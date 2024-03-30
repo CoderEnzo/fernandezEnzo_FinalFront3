@@ -1,21 +1,25 @@
-import React from "react";
+import React from 'react';
+import '../assets/css/Card.css';
+import { Link } from 'react-router-dom';
 
+const Card = ({ dentist, isFavorite, toggleFavorite }) => {
+  const handleButtonClick = (event) => {
+    event.preventDefault();
 
-const Card = ({ name, username, id }) => {
-
-  const addFav = ()=>{
-    // Aqui iria la logica para agregar la Card en el localStorage
-  }
+    toggleFavorite();
+  };
 
   return (
-    <div className="card">
-        {/* En cada card deberan mostrar en name - username y el id */}
-
-        {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
-
-        {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-        <button onClick={addFav} className="favButton">Add fav</button>
-    </div>
+    <Link to={`/dentist/${dentist.id}`} className="card-link">
+      <div className="card">
+        <img src="./img/doctor.jpg" alt="doctor-image" />
+        <h3>{dentist.name}</h3>
+        <p>{dentist.username}</p>
+        <button onClick={handleButtonClick}>
+          {isFavorite ? 'Remove from Favorites😭​' : 'Add to Favorites🥰'}
+        </button>
+      </div>
+    </Link>
   );
 };
 

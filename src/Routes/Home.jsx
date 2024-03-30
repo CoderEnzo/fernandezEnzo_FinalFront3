@@ -1,17 +1,35 @@
-import React from 'react'
-import Card from '../Components/Card'
+import React from 'react';
+import { useGlobalContext } from '../Components/utils/GlobalContext';
+import Card from '../Components/Card';
 
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+function Home() {
+  const { theme, dentists, addToFavorites, removeFromFavorites, favorites } = useGlobalContext();
 
-const Home = () => {
+  const toggleFavorite = (dentist) => {
+    if (favorites.some(fav => fav.id === dentist.id)) {
+      removeFromFavorites(dentist);
+    } else {
+      addToFavorites(dentist);
+    }
+  };
+
   return (
-    <main className="" >
-      <h1>Home</h1>
-      <div className='card-grid'>
-        {/* Aqui deberias renderizar las cards */}
+    <div>
+      <div className={`content ${theme}`}>
+        <h1>Home</h1>
+        <div className='card-grid'>
+          {dentists.map((dentist) => (
+            <Card
+              key={dentist.id}
+              dentist={dentist}
+              isFavorite={favorites.some(fav => fav.id === dentist.id)}
+              toggleFavorite={() => toggleFavorite(dentist)}
+            />
+          ))}
+        </div>
       </div>
-    </main>
-  )
+    </div>
+  );
 }
 
-export default Home
+export default Home;
